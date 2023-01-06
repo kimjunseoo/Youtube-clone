@@ -2,9 +2,11 @@ import "./db";
 import "./models/Video";
 import express from "express";
 import morgan from "morgan";
-import globalRouter from "./routers/globalRouter";
+import rootRouter from "./routers/rootRouter";
 import videoRouter from "./routers/videoRouter";
 import usersRouter from "./routers/userRouter";
+import session from "express-session";
+import { localsMiddleware } from "./middlewares";
 
 
 const app = express();
@@ -17,7 +19,21 @@ app.set("views", process.cwd() + "/src/views");
 
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
-app.use("/", globalRouter);
+
+app.use(session({
+    secret: "Hello!",
+    resave: true,
+    saveUninitialized: true,
+    })
+);
+
+app.get("/add-one", (req, res, next) => {
+    return res.send(`${req.session.id}`)
+})
+
+app.use(localsMiddleware);
+
+app.use("/", rootRouter);
 app.use("/videos", videoRouter);
 app.use("/users", usersRouter);
 
