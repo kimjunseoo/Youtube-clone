@@ -1,17 +1,19 @@
-# Wetube Reloaded
+# Youtube function Clone Project
 
-/ -> Home
-/join -> Join
-/login -> Login
-/search -> Search
+**##Description**
+- This is a clone project with the following functions.
+  - Join / Login
+  - Upload Video 
+  - Search Video 
+  - Delete Video
+  - Record Video(using own web cam)
+  - Video player handler (custom)
 
-/users/:id -> See User
-/users/logout -> Log Out
-/users/edit -> Edit My Profile
-/users/delete -> Delete My Profile
 
-/videos/:id -> Watch Video
-/videos/:id/edit -> Edit Video
-/videos/:id/delete -> Delete Video
-/videos/upload -> Upload Video
+**##Using**
+- Node.js / JS
+- Express
+- MongoDB/Mongoose
+- Pug
+- Webpack
 
