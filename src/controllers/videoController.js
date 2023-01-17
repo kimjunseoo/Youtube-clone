@@ -55,7 +55,7 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = async (req, res) => {
-    const file = req.file; //req.file is gived by multer
+    const { path: fileUrl } = req.file; //req.file is gived by multer
     const title = req.body.title;
     const description = req.body.description;
     const hashtags = req.body.hashtags;
@@ -63,7 +63,7 @@ export const postUpload = async (req, res) => {
         await Video.create({
             title: title,
             description: description,
-            fileUrl: file.path,
+            fileUrl,
             hashtags: Video.formatHashtags(hashtags),
         });
         return res.redirect("/");
